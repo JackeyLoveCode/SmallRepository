@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.some.egov.beans">
+	<class name="User" table="t_user">
+		<id name="userId" column="userId">
+			<generator class="increment"/>
+		</id>
+		<property name="usercode"/>
+		<property name="username"/>
+		<property name="userpawd"/>
+		<property name="orgtype"/>
+		<property name="userdate"/>
+		<!-- Investor的Set -->
+		<set name="set" cascade="save-update">
+			<key column="userId"></key>
+			<one-to-many class="Investor"/>
+		</set>
+		<!-- Enterprise的Set -->
+		<set name="enterSet" cascade="save-update">
+			<key column="userId"></key>
+			<one-to-many class="Enterprise"/>
+		</set>
+		<!-- Author的Set -->
+		<set name="autSet" cascade="save-update">
+			<key column="userId"></key>
+			<one-to-many class="Author"/>
+		</set>
+	</class>
+</hibernate-mapping>

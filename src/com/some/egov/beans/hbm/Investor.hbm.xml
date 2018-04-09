@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.some.egov.beans">
+	<class name="Investor" table="t_investor">
+		<id name="investor_reg_code">
+			<generator class="sequence">
+				<param name="SEQUENCE_PARAM">seq_investor_reg_code</param>
+				<param name="INITIAL_PARAM">10000</param>
+			</generator>
+		</id>
+		<property name="investor_name"/>
+		<property name="country"/>
+		<property name="org_code"/>
+		<property name="contact"/>
+		<property name="contact_pho_num"/>
+		<property name="email"/>
+		<property name="note"/>
+		<property name="regdate"/>
+		<many-to-one name="user" class="User" column="userId"/>
+		<set name="set">
+			<key column="invId"></key>
+			<one-to-many class="EnInv"/>
+		</set>
+	</class>
+</hibernate-mapping>

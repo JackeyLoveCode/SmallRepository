@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.some.egov.beans">
+	<class name="Author" table="t_author">
+	 	<id name="a_no">
+	 		<generator class="sequence">
+	 			<param name="sequence">ano_seq</param>
+	 		</generator>
+	 	</id>
+	 	<!-- <property name="orgcode"/> -->
+	 	<property name="note"/>
+	 	<property name="contact"/>
+	 	<property name="contact_pho_num"/>
+	 	<property name="cap_veri_file"/>
+	 	<property name="file_remark"/>
+	 	<!-- <property name="agent"/> -->
+	 	<property name="state_feedback"/>
+	 	<property name="regdate"/>
+	 	<property name="reg_curr"/>
+	 	<property name="reg_capital"/>
+	 	<many-to-one name="enterprise" class="Enterprise" column="eid" cascade="save-update"/>
+	 	<many-to-one name="user" class="User" column="userId"/>
+	</class>
+</hibernate-mapping>

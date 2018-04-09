@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 设置上传文件的大小 -->
+	<constant name="struts.multipart.maxSize" value="20971520"/>
+	<package name="xxx" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="permissionInterceptor" class="com.some.egov.interceptors.PermissionInterceptor">
+			</interceptor>
+			
+			<interceptor-stack name="permissionStack">
+				<interceptor-ref name="permissionInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="permissionStack"/>
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="success" type="redirectAction">user_pageQuery</result>
+			<result name="pageQuery">/system/right2.jsp</result>
+			<result name="login">/main.html</result>
+			<result name="loginFail">/login.jsp</result>
+			<result name="toAddUser">/user/addUser.jsp</result>
+			<result name="delete" type="redirectAction">user_pageQuery</result>
+			<result name="toUpdatePage">/user/userUpdate.jsp</result>
+			<result name="update" type="redirectAction">user_pageQuery</result>
+			<result name="logout">/login.jsp</result>
+			<result name="errorValidateCode">/login.jsp</result>
+			<result name="error">/login.jsp</result>
+		</action>
+		<action name="inv_*" class="invAction" method="{1}">
+			<result name="pageQuery">/basicInfo/OrgList.jsp</result>
+			<result name="OrgAdd" type="redirectAction">inv_pageQuery.action</result>
+			<result name="viewInv">/basicInfo/OrgView.jsp</result>
+			<result name="foreign">/foreignExchange/EntList.jsp</result>
+		</action>
+		<action name="ent_*" class="entAction" method="{1}">
+			<result name="checkOrgcode">/foreignExchange/EntAdd.jsp</result>
+			<result name="error">/foreignExchange/EntView.jsp</result>
+			<result name="saveEnt" type="chain">entInv_saveEntInv</result>
+			<result name="pageQuery">/author/EnList.jsp</result>
+			<result name="getEntByOrgcode">/author/EnDetail.jsp</result>
+		</action>
+		<action name="aut_*" class="autAction" method="{1}">
+			<result name="toEnDetail" type="chain">ent_getEntByOrgcode</result>
+			<result name="saveAuthor">/author/inputOrg.jsp</result>
+			<result name="queryAuthor">/bankAuthor/AuthorInfo.jsp</result>
+			<result name="error">/bankAuthor/error.jsp</result>
+			<result name="updateAuthor">/bankAuthor/inputAuthorCode.jsp</result>
+			<result name="updateError">/bankAuthor/inputAuthorCode.jsp</result>
+		</action>
+		<action name="entInv_*" class="entInvAction" method="{1}">
+			<result name="input">/error.jsp</result>
+			<result name="saveEntInv">/foreignExchange/EntView.jsp</result>
+		</action>
+	</package>
+</struts>

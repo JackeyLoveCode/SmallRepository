@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.some.egov.beans">
+	<class name="EnInv" table="t_enInv">
+	 	<id name="enInvId">
+	 		<generator class="increment"/>
+	 	</id>
+	 	<property name="reg_cap_con"/>
+	 	<property name="pro_dis"/>
+	 	<many-to-one name="enterprise" class="Enterprise" column="enterId"/>
+	 	<many-to-one name="investor" class="Investor" column="invId"/>
+	</class>
+</hibernate-mapping>
