@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>egov</display-name>
+  <welcome-file-list>
+  	<welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- 检查是否登录过滤器 -->
+  <filter>
+  	<filter-name>CheckLoginFilter</filter-name>
+  	<filter-class>com.some.egov.user.filters.CheckLoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>CheckLoginFilter</filter-name>
+  	<url-pattern>/servlet/*</url-pattern>
+  	<url-pattern>*.jsp</url-pattern>
+  	<url-pattern>*.html</url-pattern>
+  </filter-mapping>
+  <!-- 字符编码过滤器 -->
+  <filter>
+  		<filter-name>CharatorEncodingFilter</filter-name>
+  		<filter-class>com.some.egov.user.filters.CharactorEncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>CharatorEncodingFilter</filter-name>
+  	<url-pattern>/servlet/*</url-pattern>
+  </filter-mapping>
+	<servlet>
+		<servlet-name>SaveUserServlet</servlet-name>
+		<servlet-class>com.some.egov.user.servlet.SaveUserServlet</servlet-class>
+	</servlet>
+  <servlet>
+    <servlet-name>PageQuery</servlet-name>
+    <servlet-class>com.some.egov.user.servlet.PageQuery</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GoUpdate</servlet-name>
+    <servlet-class>com.some.egov.user.servlet.GoUpdate</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DoUpdateUserServlet</servlet-name>
+    <servlet-class>com.some.egov.user.servlet.DoUpdateUserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <servlet-class>com.some.egov.user.servlet.DeleteUserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>checkUsercodeServlet</servlet-name>
+    <servlet-class>com.some.egov.user.servlet.checkUsercodeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.some.egov.user.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>com.some.egov.user.servlet.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SaveInvInfoServlet</servlet-name>
+    <servlet-class>com.some.egov.investor.servlet.SaveInvInfoServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>PageQueryInv</servlet-name>
+    <servlet-class>com.some.egov.investor.servlet.PageQueryInv</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ViewInvestorServlet</servlet-name>
+    <servlet-class>com.some.egov.investor.servlet.ViewInvestorServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CheckOrgcodeServlet</servlet-name>
+    <servlet-class>com.some.egov.enterprise.servlet.CheckOrgcodeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SaveEntInfoServlet</servlet-name>
+    <servlet-class>com.some.egov.enterprise.servlet.SaveEntInfoServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+
+
+	<servlet-mapping>
+		<servlet-name>SaveUserServlet</servlet-name>
+		<url-pattern>/servlet/saveUser</url-pattern>
+	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PageQuery</servlet-name>
+    <url-pattern>/servlet/pageQuery</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GoUpdate</servlet-name>
+    <url-pattern>/servlet/goUpdate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DoUpdateUserServlet</servlet-name>
+    <url-pattern>/servlet/updateUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <url-pattern>/servlet/deleteUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>checkUsercodeServlet</servlet-name>
+    <url-pattern>/servlet/checkUsercode</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/servlet/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/servlet/logout</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SaveInvInfoServlet</servlet-name>
+    <url-pattern>/servlet/saveInvInfo</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PageQueryInv</servlet-name>
+    <url-pattern>/servlet/pageQueryInv</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ViewInvestorServlet</servlet-name>
+    <url-pattern>/servlet/viewInvestor</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckOrgcodeServlet</servlet-name>
+    <url-pattern>/servlet/checkOrgcode</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SaveEntInfoServlet</servlet-name>
+    <url-pattern>/servlet/saveEnt</url-pattern>
+  </servlet-mapping>
+</web-app>
